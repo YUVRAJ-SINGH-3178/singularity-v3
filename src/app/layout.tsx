@@ -1,7 +1,7 @@
 import { Unbounded } from 'next/font/google';
 import { EntryWrapper } from '../components/EntryWrapper';
 import Navbar from '../components/Navbar'; 
-// REMOVED: import Footer from '../components/Footer'; 
+import type { Metadata } from 'next';
 import './globals.css';
 
 const unbounded = Unbounded({ 
@@ -10,9 +10,15 @@ const unbounded = Unbounded({
   display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Singularity Student Lab | SRMAP',
-  description: 'The Singularity Student Lab at SRM University AP...'
+  description: 'The Singularity Advanced Student Research Lab at SRM University AP pioneers innovative research in artificial intelligence, quantum algorithms, spatial computing, and robotics.',
+  openGraph: {
+    title: 'Singularity Student Lab | SRMAP',
+    description: 'Pioneering research in AI, quantum algorithms, and spatial computing at SRM University AP.',
+    url: 'https://singularitylabsrmap.space',
+    siteName: 'Singularity Student Lab',
+  }
 };
 
 export default function RootLayout({
@@ -28,7 +34,6 @@ export default function RootLayout({
           <div className="min-h-screen">
             {children}
           </div>
-          {/* REMOVED: <Footer /> */}
         </EntryWrapper>
       </body>
     </html>

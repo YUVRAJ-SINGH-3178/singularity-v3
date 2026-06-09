@@ -12,11 +12,13 @@ export function LoadingScreen({ onEnter }: LoadingScreenProps) {
   const [progress, setProgress] = useState(0);
   const [isReady, setIsReady] = useState(false);
   const [hexCode, setHexCode] = useState("0x00000000");
+  const [latency, setLatency] = useState<number | null>(null);
   
   const containerRef = useRef<HTMLDivElement>(null);
   const ringGroupRef = useRef<SVGGElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  
 
   // Circle Math
   const radius = 140;
@@ -24,6 +26,8 @@ export function LoadingScreen({ onEnter }: LoadingScreenProps) {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   useEffect(() => {
+
+    setLatency(Math.floor(Math.random() * 12 + 4));
     let currentProgress = 0;
     
     const interval = setInterval(() => {
@@ -77,6 +81,8 @@ export function LoadingScreen({ onEnter }: LoadingScreenProps) {
     <div 
       ref={containerRef} 
       className="fixed inset-0 w-full h-full bg-[#050505] z-[9999] flex items-center justify-center text-white overflow-hidden"
+      aria-hidden="true" 
+      data-nosnippet
     >
       <LogoParticles />
       
@@ -84,7 +90,7 @@ export function LoadingScreen({ onEnter }: LoadingScreenProps) {
       <div className="absolute top-8 left-8 text-[10px] font-mono text-white/30 tracking-widest hidden md:block">
         SYS.REQ // {hexCode}
       </div>
-      <div className="absolute bottom-8 right-8 text-[10px] font-mono text-white/30 tracking-widest hidden md:block">
+      <div suppressHydrationWarning className="absolute bottom-8 right-8 text-[10px] font-mono text-white/30 tracking-widest hidden md:block">
         LATENCY: {Math.floor(Math.random() * 12 + 4)}ms
       </div>
 
