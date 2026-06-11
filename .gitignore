@@ -39,3 +39,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+SEO_SCHEMA_VALIDATION.md
+TECHNICAL_IMPLEMENTATION_SUMMARY.md
