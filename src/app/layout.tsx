@@ -26,8 +26,50 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://singularitylabsrmap.space/#organization",
+    "name": "Singularity Advanced Student Research Lab",
+    "url": "https://singularitylabsrmap.space/",
+    "founder": {
+      "@id": "https://jayanthramakrishnan.online/#person"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/singularity-student-lab-srmap/",
+      "https://www.instagram.com/thesingularity.srmap/"
+    ]
+  };
+
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://jayanthramakrishnan.online/#person",
+    "name": "Jayanth Ramakrishnan",
+    "url": "https://jayanthramakrishnan.online/",
+    "worksFor": {
+      "@id": "https://singularitylabsrmap.space/#organization"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/jayanth-ramakrishnan/",
+      "https://x.com/jayanth_in",
+      "https://www.instagram.com/thejayanthramakrishnan/",
+      "https://jayanthramakrishnan.online/"
+    ]
+  };
+
   return (
     <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+      </head>
       <body className={`${unbounded.className} bg-black min-h-screen text-white overflow-x-hidden`}>
         <EntryWrapper>
           <Navbar />
